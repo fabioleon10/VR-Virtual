@@ -1,13 +1,11 @@
-/******************************/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Quicksand:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Quicksand:wght@300&display=swap');
 
-
-*, *:before, *:after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
 }
 
 html {
@@ -24,65 +22,71 @@ body {
     color: #fff;
 }
 
-
-/******************************/
-
-
-body::before, body::after {
+body::before,
+body::after {
     content: '';
     position: absolute;
     z-index: -1;
     border-radius: 50%;
     width: 15rem;
-    aspect-ratio: 1/1;
+    height: 15rem;
     filter: blur(50px);
     background: #650859;
-    
 }
 
 body::before {
     top: -5rem;
     left: -5rem;
 }
+
 body::after {
-    top: unset;
-    left: unset;
     bottom: -5rem;
     right: -5rem;
 }
+
+/* Header */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding-top: 1rem;
-    padding-inline: 15%;
+    padding: 1rem 15%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1;
+    z-index: 100;
 }
-header img {
+
+.logo img {
     width: 5rem;
 }
-header nav {
+
+.nav-bar {
     display: flex;
     gap: .5rem;
-    justify-content: space-between;
-    align-items: center;
 }
-header nav a {
+
+.nav-bar a {
     text-decoration: none;
     color: inherit;
     font-size: .9rem;
     text-transform: capitalize;
     border-radius: 100vw;
-    border-radius: 100vw;
     padding: .5rem 1rem;
     transition: .3s ease;
 }
-header nav a:hover, .active {
+
+.nav-bar a:hover,
+.nav-bar a.active {
     background: #7522a2;
 }
+
+.nav-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Main Image */
 .main-img {
     position: absolute;
     width: 37rem;
@@ -96,6 +100,7 @@ header nav a:hover, .active {
     right: 0;
     width: 8rem;
 }
+
 .left-dots {
     top: unset;
     right: unset;
@@ -103,6 +108,7 @@ header nav a:hover, .active {
     left: 0;
 }
 
+/* Side Bar */
 .side {
     height: 100vh;
     position: absolute;
@@ -112,25 +118,33 @@ header nav a:hover, .active {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding: 2rem 1rem;
 }
-.side p {
-    transform: rotate(90deg);
-    margin-block: 2rem;
 
+.side p {
+    transform: rotate(-90deg);
+    white-space: nowrap;
 }
 
 .arrow {
     width: 2rem;
     animation: updown .5s linear infinite alternate;
 }
+
 @keyframes updown {
-    100%{transform: translateY(2rem);}
+    100% {
+        transform: translateY(2rem);
+    }
 }
 
 .social-icon {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.social-icon a {
+    text-decoration: none;
 }
 
 .social-icon ion-icon {
@@ -148,29 +162,35 @@ header nav a:hover, .active {
     color: #fff;
 }
 
-section {
+/* Section Content */
+.home {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
 }
-section .content {
+
+.content {
     padding-left: 10%;
 }
-section .content h1 {
+
+.content h1 {
     font-size: 5rem;
     text-transform: uppercase;
     position: relative;
 }
 
-section .content h1::before, section .content h1::after{
+.content h1::before,
+.content h1::after {
     content: '';
     position: absolute;
     background: url(../images/rounded-star.png) center center / cover;
-    width: 3rem;aspect-ratio: 1/1;
+    width: 3rem;
+    aspect-ratio: 1/1;
     top: -2rem;
 }
-section .content h1::after {
+
+.content h1::after {
     top: unset;
     bottom: -2rem;
 }
@@ -188,15 +208,171 @@ section .content h1::after {
     border: 2px solid #7522a2;
     padding: .5rem 1.5rem;
     cursor: pointer;
-    transition: .3 ease;
+    transition: .3s ease;
+    font-family: inherit;
+    text-transform: uppercase;
 }
 
 .buttonholder button:hover {
     background: #7522a2;
 }
 
-section .content p{
+.content p {
     font-size: .8rem;
     width: 70%;
+}
 
+/* Responsive */
+@media (max-width: 1200px) {
+    .main-img {
+        width: 30rem;
+        right: 1rem;
+    }
+    
+    header {
+        padding: 1rem 5%;
+    }
+    
+    .content {
+        padding-left: 8%;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-img {
+        width: 25rem;
+    }
+    
+    .content h1 {
+        font-size: 3.5rem;
+    }
+    
+    .side {
+        display: none;
+    }
+    
+    .content {
+        padding-left: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+        z-index: 101;
+    }
+    
+    .nav-bar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 60%;
+        height: 100vh;
+        background: #171115;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.4s ease;
+        gap: 2rem;
+    }
+    
+    .nav-bar.active {
+        right: 0;
+    }
+    
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .home {
+        position: relative;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 6rem;
+    }
+    
+    .content {
+        padding: 2rem 5%;
+        text-align: center;
+        z-index: 1;
+    }
+    
+    .content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .content h1::before,
+    .content h1::after {
+        width: 2rem;
+    }
+    
+    .content p {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .buttonholder {
+        justify-content: center;
+    }
+    
+    .main-img {
+        position: relative;
+        width: 100%;
+        max-width: 22rem;
+        right: unset;
+        bottom: unset;
+        margin: 2rem auto 0;
+        display: block;
+    }
+    
+    .dots {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1rem 4%;
+    }
+    
+    .logo img {
+        width: 4rem;
+    }
+    
+    .nav-bar {
+        width: 75%;
+    }
+    
+    .content h1 {
+        font-size: 2rem;
+    }
+    
+    .content h1::before,
+    .content h1::after {
+        display: none;
+    }
+    
+    .buttonholder {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .buttonholder button {
+        width: 80%;
+        padding: .6rem 1rem;
+    }
+    
+    .main-img {
+        max-width: 18rem;
+    }
+    
+    .content p {
+        font-size: .85rem;
+        padding: 0 1rem;
+    }
 }

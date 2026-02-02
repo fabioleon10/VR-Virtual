@@ -10,32 +10,39 @@
 
 <body>
     <header>
-        <a href="" class="logo">
-            <img src="./assets/images/logo.png" alt="">
+        <a href="index.html" class="logo">
+            <img src="./assets/images/logo.png" alt="VR Virtual Logo">
         </a>
 
-        <nav>
-            <a href="" class="active">home</a>
-            <a href="">VR news </a>
-            <a href="">demo</a>
-            <a href="">sobre</a>
-            <a href="">contato</a>
+        <nav class="nav-bar">
+            <a href="#" class="active">home</a>
+            <a href="#">VR news</a>
+            <a href="#">demo</a>
+            <a href="#">sobre</a>
+            <a href="#">contato</a>
         </nav>
+
+        <div class="nav-toggle">
+            <ion-icon name="menu-outline"></ion-icon>
+        </div>
     </header>
-    <section>
-        <img src="./assets/images/main-img.png" alt="" class="main-img">
+
+    <section class="home">
+        <img src="./assets/images/main-img.png" alt="Pessoa usando óculos VR" class="main-img">
         <img src="./assets/images/dots.png" alt="" class="dots">
         <img src="./assets/images/dots.png" alt="" class="dots left-dots">
+        
         <div class="side">
             <p>live streaming</p>
             <img src="./assets/images/arrow.png" class="arrow" alt="">
             <div class="social-icon">
-                <ion-icon name="logo-facebook"></ion-icon>
-                <ion-icon name="logo-instagram"></ion-icon>
-                <ion-icon name="logo-tiktok"></ion-icon>
-                <ion-icon name="logo-twitter"></ion-icon>
+                <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-tiktok"></ion-icon></a>
+                <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
             </div>
         </div>
+        
         <div class="content">
             <h1>vr virtual</h1>
             <div class="buttonholder">
@@ -45,8 +52,23 @@
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, natus dicta.</p>
         </div>
     </section>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navBar = document.querySelector('.nav-bar');
+
+        navToggle.addEventListener('click', () => {
+            navBar.classList.toggle('active');
+            const icon = navToggle.querySelector('ion-icon');
+            if (navBar.classList.contains('active')) {
+                icon.setAttribute('name', 'close-outline');
+            } else {
+                icon.setAttribute('name', 'menu-outline');
+            }
+        });
+    </script>
 </body>
 
 </html>
